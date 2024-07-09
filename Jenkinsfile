@@ -1,7 +1,8 @@
 library identifier: 'jenkins-shared-library@main', retriever: modernSCM(
         [$class: 'GitSCMSource',
-         remote: 'https://@github.com/Mohamedjbelii/jenkins-shared-library.git',
-         credentialsId: '4c676b09-9e37-4932-8407-8e46c6ba2e17\t'
+
+         remote: 'https://github.com/Mohamedjbelii/jenkins-shared-library.git',
+         credentialsId: '4c676b09-9e37-4932-8407-8e46c6ba2e17'
         ]
 )
 //@Library('jenkins-shared-library') we use this in case if we want to define a global library config
