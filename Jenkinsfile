@@ -2,6 +2,9 @@ def gv
 
 pipeline {
     agent any
+    tools {
+            maven "maven-3.6"
+    }
     stages {
         stage("init") {
             steps {
@@ -10,27 +13,36 @@ pipeline {
                 }
             }
         }
-        stage("build jar") {
+        stage("test") {
             steps {
                 script {
-                    echo "building jar  "
-                    //gv.buildJar()
+                    gv.testApp()
+                }
+            }
+        }
+        stage("build jar") {
+            when{
+                expression {
+                    BRANCH_NAME == "main"
+                }
+            }
+            steps {
+                script {
+                    gv.buildJar()
                 }
             }
         }
         stage("build image") {
             steps {
                 script {
-                    echo "building image"
-                    //gv.buildImage()
+                    gv.buildImage()
                 }
             }
         }
         stage("deploy") {
             steps {
                 script {
-                    echo "deploying"
-                    //gv.deployApp()
+                   gv.deployApp()
                 }
             }
         }
