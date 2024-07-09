@@ -1,7 +1,11 @@
+def testApp() {
+    echo "Testing the application..."
+    echo "Executing the pipeline for branch $BRANCH_NAME"
+} 
 def buildJar() {
     echo "building the application..."
     sh 'mvn package'
-} 
+}
 
 def buildImage() {
     echo "building the docker image..."
