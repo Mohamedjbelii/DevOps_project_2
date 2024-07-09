@@ -35,13 +35,28 @@ pipeline {
                 }
             }
         }
-        stage("build and push image") {
+        stage("docker login") {
             steps {
                 script {
-                    buildImage 'mohamedjbelii/devops_bootcamp:jma-3.1'
+                    dockerLogin()
                 }
             }
         }
+        stage("build the docker image") {
+            steps {
+                script {
+                    buildImage 'mohamedjbelii/devops_bootcamp:jma-3.2'
+                }
+            }
+        }
+        stage("push the docker image") {
+            steps {
+                script {
+                    dockerPush'mohamedjbelii/devops_bootcamp:jma-3.2'
+                }
+            }
+        }
+
         stage("deploy") {
             steps {
                 script {
