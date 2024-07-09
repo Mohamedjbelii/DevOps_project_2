@@ -38,7 +38,7 @@ pipeline {
         stage("build and push image") {
             steps {
                 script {
-                    buildImage()
+                    buildImage 'mohamedjbelii/devops_bootcamp:jma-3.0'
                 }
             }
         }
