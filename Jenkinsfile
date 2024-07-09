@@ -49,7 +49,14 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                   gv.deployApp()
+                    gv.deployApp()
+                }
+            }
+        }
+        stage("commit version update") {
+            steps {
+                script {
+                    gv.commitVersion()
                 }
             }
         }
