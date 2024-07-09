@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+        stage("increment version") {
+            steps {
+                script {
+                    gv.incrementJar()
+                }
+            }
+        }
         stage("test") {
             steps {
                 script {
@@ -23,7 +30,7 @@ pipeline {
         stage("build jar") {
             when{
                 expression {
-                    BRANCH_NAME == "main"
+                    BRANCH_NAME == "jenkins-jobs"
                 }
             }
             steps {
