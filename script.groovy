@@ -42,7 +42,9 @@ def commitVersion() {
         sh 'git config --list'
         def gitUrl = "https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
 
-        echo "Setting remote URL to: ${gitUrl}"
+        echo "removing remote URL "
+        sh 'git remote rm origin'
+        echo "setting remote URL to: ${gitUrl}"
 
         sh "git remote set-url origin ${gitUrl}"
         sh 'git add .'
