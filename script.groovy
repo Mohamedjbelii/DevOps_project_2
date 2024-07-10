@@ -42,10 +42,6 @@ def commitVersion() {
         def gitUrl = "https://${TOKEN}@github.com/Mohamedjbelii/DevOps_project_2.git"
 
         echo "removing remote URL "
-        sh 'git remote rm origin'
-
-        sh 'git remote add https://github.com/Mohamedjbelii/DevOps_project_2.git'
-
         echo "setting remote URL to: ${gitUrl}"
 
         sh "git remote set-url origin ${gitUrl}"
