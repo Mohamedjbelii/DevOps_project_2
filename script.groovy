@@ -31,7 +31,7 @@ def deployApp() {
     echo 'deploying the application...'
 }
 def commitVersion() {
-    withCredentials([string(credentialsId: '4c676b09-9e37-4932-8407-8e46c6ba2e17', variable: 'TOKEN')]) {
+    withCredentials([string(credentialsId: 'github-api-token', variable: 'TOKEN')]) {
         sh 'git config --global user.email "jenkins@gmail.com"'
         sh 'git config --global user.name "jenkins"'
         // Debugging: Print the user and masked pass
