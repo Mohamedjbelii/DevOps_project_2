@@ -31,19 +31,21 @@ def deployApp() {
     echo 'deploying the application...'
 }
 def commitVersion() {
-    withCredentials([usernamePassword(credentialsId: 'c62b65ef-b4c0-40fc-9f90-6fa3783d1e6c', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    withCredentials([sshUserPrivateKey(credentialsId: '4c676b09-9e37-4932-8407-8e46c6ba2e17', keyFileVariable: 'TOKEN')]) {
         sh 'git config --global user.email "jenkins@gmail.com"'
         sh 'git config --global user.name "jenkins"'
         // Debugging: Print the user and masked pass
-        echo "User: ${USER}"
-        echo "Pass: ${PASS}"
+        echo "TOKEN: ${TOKEN}"
         sh 'git status'
         sh 'git branch'
         sh 'git config --list'
-        def gitUrl = "https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
+        def gitUrl = "https://${TOKEN}@github.com/Mohamedjbelii/DevOps_project_2.git"
 
         echo "removing remote URL "
         sh 'git remote rm origin'
+
+        sh 'git remote add https://github.com/Mohamedjbelii/DevOps_project_2.git'
+
         echo "setting remote URL to: ${gitUrl}"
 
         sh "git remote set-url origin ${gitUrl}"
