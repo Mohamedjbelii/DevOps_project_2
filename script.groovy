@@ -42,10 +42,8 @@ def commitVersion() {
         sh "git remote set-url origin https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
         sh 'git add .'
         sh 'git remote -v'
-        sh 'git remote add origin https://github.com/Mohamedjbelii/DevOps_project_2.git'
-        sh 'git remote -v'
         sh 'git commit -m "CI:version bump"'
-        sh 'git push origin HEAD:jenkins-jobs'
+        sh 'git push '
     }
 }
 
