@@ -34,12 +34,17 @@ def commitVersion() {
     withCredentials([usernamePassword(credentialsId: 'c62b65ef-b4c0-40fc-9f90-6fa3783d1e6c', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh 'git config --global user.email "jenkins@gmail.com"'
         sh 'git config --global user.name "jenkins"'
-
+        // Debugging: Print the user and masked pass
+        echo "User: ${USER}"
+        echo "Pass: ${PASS}"
         sh 'git status'
         sh 'git branch'
         sh 'git config --list'
+        def gitUrl = "https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
 
-        sh "git remote set-url origin https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
+        echo "Setting remote URL to: ${gitUrl}"
+
+        sh "git remote set-url origin ${gitUrl}"
         sh 'git add .'
         sh 'git remote -v'
         sh 'git commit -m "CI:version bump"'
