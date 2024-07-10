@@ -32,20 +32,18 @@ def deployApp() {
 }
 def commitVersion() {
     withCredentials([usernamePassword(credentialsId: 'c62b65ef-b4c0-40fc-9f90-6fa3783d1e6c', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'git config --global user.email "jenkins@gmail.com" '
-        sh 'git config --global user.name "jenkins" '
+        sh 'git config --global user.email "jenkins@gmail.com"'
+        sh 'git config --global user.name "jenkins"'
 
-        sh' git status'
-        sh' git branch'
-        sh' git config --list'
-
+        sh 'git status'
+        sh 'git branch'
+        sh 'git config --list'
 
         sh "git remote set-url origin https://${USER}:${PASS}@github.com/Mohamedjbelii/DevOps_project_2.git"
         sh 'git add .'
         sh 'git commit -m "CI:version bump"'
-        sh 'git push origin HEAD:jenkins-jobs '
-        sh 'git add .'
-
+        sh 'git push origin HEAD:jenkins-jobs'
     }
 }
+
 return this
