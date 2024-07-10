@@ -43,7 +43,7 @@ def commitVersion() {
         sh 'git add .'
         sh 'git remote -v'
         sh 'git commit -m "CI:version bump"'
-        sh 'git push '
+        sh 'git push origin HEAD:jenkins-jobs'
     }
 }
 
