@@ -46,7 +46,7 @@ pipeline {
                 }
             }
         }
-        stage("deploy") {
+        stage("deploy to server vm") {
             steps {
                 script {
                     gv.deployApp()

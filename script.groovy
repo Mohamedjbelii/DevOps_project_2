@@ -28,8 +28,10 @@ def buildImage() {
 }
 
 def deployApp() {
-    echo 'deploying the application...'
-}
+    sshagent(['server-vm']) {
+        def dockerCommand = 'docker run -p 3080:3080 mohamedjbelii/devops_bootcamp:$IMAGE_NAME '
+        sh "ssh -o StrictHostKeyChecking=off server_user@40.91.197.93 ${dockerCommand} "
+        }}
 def commitVersion() {
     withCredentials([string(credentialsId: 'github-api-token', variable: 'TOKEN')]) {
 //        sh 'git config --global user.email "jenkins@gmail.com"'
