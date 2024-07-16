@@ -29,8 +29,9 @@ def buildImage() {
 
 def deployApp() {
     sshagent(['server-vm']) {
-        def dockerCommand = 'docker run -p 3080:8080 -d mohamedjbelii/devops_bootcamp:jma-2.0 '
-        sh "ssh -o StrictHostKeyChecking=off server_user@40.91.197.93 ${dockerCommand} "
+        def dockerComposeCmd = 'docker-compose docker-compose.yaml up --detach'
+        sh "scp docker-compose.yaml server_user@40.91.197.93:/home/server_user"
+        sh "ssh -o StrictHostKeyChecking=off server_user@40.91.197.93 ${dockerComposeCmd} "
         }}
 def commitVersion() {
     withCredentials([string(credentialsId: 'github-api-token', variable: 'TOKEN')]) {
