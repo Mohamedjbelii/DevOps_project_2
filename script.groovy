@@ -29,7 +29,7 @@ def buildImage() {
 
 def deployApp() {
     sshagent(['server-vm']) {
-        def dockerCommand = 'docker run -p 3080:3080 -d mohamedjbelii/devops_bootcamp:jma-2.0 '
+        def dockerCommand = 'docker run -p 3080:8080 -d mohamedjbelii/devops_bootcamp:jma-2.0 '
         sh "ssh -o StrictHostKeyChecking=off server_user@40.91.197.93 ${dockerCommand} "
         }}
 def commitVersion() {
